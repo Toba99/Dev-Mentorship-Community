@@ -19,7 +19,7 @@ export default function AboutPage() {
     {
       icon: <Users className="h-6 w-6 text-blue-400" />,
       title: "Community",
-      description: "You're not alone on this journey. Join a network of developers supporting each other's growth and success.",
+      description: "You&apos;re not alone on this journey. Join a network of developers supporting each other&apos;s growth and success.",
     },
     {
       icon: <BookOpen className="h-6 w-6 text-purple-400" />,
@@ -62,7 +62,7 @@ export default function AboutPage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">About the Community</h2>
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                Dev Mentorship Community was founded on a simple yet powerful belief: every developer deserves access to quality mentorship that accelerates their growth and unlocks their potential. We recognized that while there are countless resources for learning to code, there's a significant gap in structured, personalized guidance that helps developers navigate the complexities of building a successful career.
+                Dev Mentorship Community was founded on a simple yet powerful belief: every developer deserves access to quality mentorship that accelerates their growth and unlocks their potential. We recognized that while there are countless resources for learning to code, there&apos;s a significant gap in structured, personalized guidance that helps developers navigate the complexities of building a successful career.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Our community brings together experienced engineers who are passionate about giving back and aspiring developers who are committed to growth. Through structured cohorts, accountability systems, and real-world project guidance, we create an environment where meaningful learning happens and careers are transformed.
@@ -152,7 +152,7 @@ export default function AboutPage() {
               <h2 className="text-4xl md:text-5xl font-bold">Our Vision</h2>
             </div>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              We envision a future where every developer has access to quality mentorship, where experienced engineers actively contribute to the growth of the next generation, and where structured learning paths make career transitions smoother and more accessible. We're building a movement that transforms how developers learn, grow, and succeed.
+              We envision a future where every developer has access to quality mentorship, where experienced engineers actively contribute to the growth of the next generation, and where structured learning paths make career transitions smoother and more accessible. We&apos;re building a movement that transforms how developers learn, grow, and succeed.
             </p>
           </motion.div>
         </div>
@@ -205,13 +205,13 @@ export default function AboutPage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Moving Forward</h2>
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                As we continue to grow, our commitment remains unwavering: to provide exceptional mentorship experiences that transform careers. We're constantly evolving our programs, expanding our mentor network, and refining our approach based on feedback and results.
+                As we continue to grow, our commitment remains unwavering: to provide exceptional mentorship experiences that transform careers. We&apos;re constantly evolving our programs, expanding our mentor network, and refining our approach based on feedback and results.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                Our roadmap includes building a comprehensive community platform, establishing partnerships with leading tech companies, and developing specialized tracks for different areas of software development. But at our core, we'll always remain focused on what matters most: connecting developers with the guidance they need to succeed.
+                Our roadmap includes building a comprehensive community platform, establishing partnerships with leading tech companies, and developing specialized tracks for different areas of software development. But at our core, we&apos;ll always remain focused on what matters most: connecting developers with the guidance they need to succeed.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Whether you're a developer looking to accelerate your growth or an experienced engineer ready to give back, we invite you to join us in building the future of developer mentorship.
+                Whether you&apos;re a developer looking to accelerate your growth or an experienced engineer ready to give back, we invite you to join us in building the future of developer mentorship.
               </p>
             </div>
           </motion.div>

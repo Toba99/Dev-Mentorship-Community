@@ -26,7 +26,7 @@ export default function MentorPage() {
     {
       icon: <Clock className="h-8 w-8 text-purple-400" />,
       title: "Flexible Commitment",
-      description: "We understand you're busy. Our structured approach makes mentoring efficient and impactful without overwhelming your schedule.",
+      description: "We understand you&apos;re busy. Our structured approach makes mentoring efficient and impactful without overwhelming your schedule.",
     },
   ]
 
@@ -110,10 +110,10 @@ export default function MentorPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">What We're Looking For</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">What We&apos;re Looking For</h2>
             <div className="glass-card rounded-xl p-8 space-y-4">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We're seeking experienced developers who are passionate about helping others grow. Ideal mentors have:
+                We&apos;re seeking experienced developers who are passionate about helping others grow. Ideal mentors have:
               </p>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
@@ -186,7 +186,7 @@ export default function MentorPage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">We Support Our Mentors</h2>
             <div className="glass-card rounded-xl p-8">
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                Mentoring shouldn't be overwhelming. We provide:
+                Mentoring shouldn&apos;t be overwhelming. We provide:
               </p>
               <ul className="space-y-3 text-muted-foreground text-left max-w-2xl mx-auto">
                 <li className="flex items-start gap-3">

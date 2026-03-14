@@ -74,10 +74,10 @@ export default function ApplyPage() {
             <CheckCircle2 className="h-16 w-16 text-green-400 mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Application Submitted!</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Thank you for your interest in Dev Mentorship Community. We've received your application and will review it carefully.
+              Thank you for your interest in Dev Mentorship Community. We&apos;ve received your application and will review it carefully.
             </p>
             <p className="text-muted-foreground">
-              You'll receive an email confirmation shortly. Our team will be in touch within 5-7 business days with next steps.
+              You&apos;ll receive an email confirmation shortly. Our team will be in touch within 5-7 business days with next steps.
             </p>
           </div>
         </motion.div>
@@ -321,7 +321,7 @@ export default function ApplyPage() {
                     id="biggestChallenge"
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg bg-background border border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
-                    placeholder="What's your biggest challenge as a developer right now?"
+                    placeholder="What&apos;s your biggest challenge as a developer right now?"
                   />
                   {errors.biggestChallenge && (
                     <p className="mt-1 text-sm text-red-400">{errors.biggestChallenge.message}</p>
@@ -342,7 +342,7 @@ export default function ApplyPage() {
                     id="whyMentorship"
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg bg-background border border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
-                    placeholder="Tell us why you're seeking mentorship..."
+                    placeholder="Tell us why you&apos;re seeking mentorship..."
                   />
                   {errors.whyMentorship && (
                     <p className="mt-1 text-sm text-red-400">{errors.whyMentorship.message}</p>
@@ -400,7 +400,7 @@ export default function ApplyPage() {
                     id="whyGoodFit"
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg bg-background border border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
-                    placeholder="Tell us why you're a good fit for this mentorship program..."
+                    placeholder="Tell us why you&apos;re a good fit for this mentorship program..."
                   />
                   {errors.whyGoodFit && (
                     <p className="mt-1 text-sm text-red-400">{errors.whyGoodFit.message}</p>

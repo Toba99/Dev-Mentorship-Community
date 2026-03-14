@@ -49,7 +49,7 @@ export default function ContactPage() {
             <CheckCircle2 className="h-16 w-16 text-green-400 mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Message Sent!</h2>
             <p className="text-lg text-muted-foreground">
-              Thank you for reaching out. We'll get back to you within 24-48 hours.
+              Thank you for reaching out. We&apos;ll get back to you within 24-48 hours.
             </p>
           </div>
         </motion.div>
@@ -72,7 +72,7 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground text-balance">
-              Have questions? We're here to help.
+              Have questions? We&apos;re here to help.
             </p>
           </motion.div>
         </div>
