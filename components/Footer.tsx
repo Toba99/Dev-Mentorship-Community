@@ -61,18 +61,33 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a 
+                  href="https://x.com/devcommunityhub?s=21&t=AKJrgNPESoZ_eo-a7Q7Yaw" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Twitter
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a 
+                  href="https://www.linkedin.com/company/dev-mentorship-community/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  GitHub
+                <a 
+                  href="https://www.youtube.com/@DevMentorshipHub/videos" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  YouTube
                 </a>
               </li>
             </ul>
