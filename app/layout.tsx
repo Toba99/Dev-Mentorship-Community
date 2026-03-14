@@ -11,16 +11,22 @@ export const metadata: Metadata = {
   description: "Empowering developers through structured mentorship. Connect with experienced engineers to accelerate growth, build confidence, and unlock real career opportunities.",
   keywords: ["developer mentorship", "coding mentorship", "software engineering mentorship", "career growth", "developer community"],
   authors: [{ name: "Dev Mentorship Community" }],
+  icons: {
+    icon: "/assets/DMC.jpeg",
+    apple: "/assets/DMC.jpeg",
+  },
   openGraph: {
     title: "Dev Mentorship Community | Structured Mentorship for Developers",
     description: "Empowering developers through structured mentorship. Connect with experienced engineers to accelerate growth, build confidence, and unlock real career opportunities.",
     type: "website",
     locale: "en_US",
+    images: ["/assets/DMC.jpeg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dev Mentorship Community | Structured Mentorship for Developers",
     description: "Empowering developers through structured mentorship. Connect with experienced engineers to accelerate growth, build confidence, and unlock real career opportunities.",
+    images: ["/assets/DMC.jpeg"],
   },
   robots: {
     index: true,
