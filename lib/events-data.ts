@@ -30,7 +30,7 @@ export const events: Event[] = [
     youtube: "https://www.youtube.com/live/XrXVvU-xEGw?si=a8f5ahdZNV1AyPsh",
   },
   {
-    title: "Navigating Software Engineering In The AI Era",
+    title: "Navigating Software Engineering In The AI Era - Samuel Olabamiji",
     date: "2026",
     location: "Online",
     description:
@@ -66,7 +66,7 @@ export const events: Event[] = [
     ],
   },
   {
-    title: "Dev Hangout 1.O - LLM Beyond Chats   Martins Eweniyi",
+    title: "Dev Hangout 1.O: LLM Beyond Chats - Martins Eweniyi",
     date: "2025",
     location: "Lagos/Online",
     description:
