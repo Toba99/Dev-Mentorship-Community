@@ -121,3 +121,7 @@ Private project for Dev Mentorship Community.
 ## 🤝 Contributing
 
 This is a private project. For questions or suggestions, please contact the development team.
+
+## Netlify
+
+https://dev-mentorship-community.netlify.app/
