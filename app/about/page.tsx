@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion"
 import SectionWrapper from "@/components/SectionWrapper"
-import { Target, Users, BookOpen, Rocket, Heart, Lightbulb } from "lucide-react"
+import CTASection from "@/components/CTASection"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { Target, Users, BookOpen, Rocket, Lightbulb } from "lucide-react"
 
 export default function AboutPage() {
   const values = [
@@ -33,6 +35,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-blue-500/10" />
+        <div className="absolute inset-0 bg-grid-glow" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -160,18 +163,11 @@ export default function AboutPage() {
 
       {/* Core Values */}
       <SectionWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Core Values</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            The principles that guide everything we do
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Our values"
+          title="Core Values"
+          subtitle="The principles that guide everything we do"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {values.map((value, index) => (
@@ -217,6 +213,14 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </SectionWrapper>
+
+      {/* CTA */}
+      <CTASection
+        title="Join the Movement"
+        description="Whether you're here to grow or to give back, there's a place for you in our community."
+        primaryCTA={{ text: "Apply for Next Cohort", href: "/apply" }}
+        secondaryCTA={{ text: "Become a Mentor", href: "/mentor" }}
+      />
     </>
   )
 }

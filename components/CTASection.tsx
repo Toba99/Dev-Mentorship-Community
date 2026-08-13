@@ -38,7 +38,7 @@ export default function CTASection({ title, description, primaryCTA, secondaryCT
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={primaryCTA.href}
-              className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 group"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-brand text-white font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 group"
             >
               {primaryCTA.text}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -7,6 +7,7 @@ import { z } from "zod"
 import { motion } from "framer-motion"
 import { Loader2, CheckCircle2 } from "lucide-react"
 import SectionWrapper from "@/components/SectionWrapper"
+import { Button } from "@/components/ui/button"
 
 const applicationSchema = z.object({
   // Basic Info
@@ -255,7 +256,7 @@ export default function ApplyPage() {
                   <label className="block text-sm font-medium mb-2">
                     Skill Level <span className="text-red-400">*</span>
                   </label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <label className="flex items-center p-4 rounded-lg border border-input cursor-pointer hover:bg-card/50 transition-colors">
                       <input
                         {...register("skillLevel")}
@@ -410,10 +411,10 @@ export default function ApplyPage() {
 
               {/* Submit Button */}
               <div className="flex justify-end">
-                <button
+                <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-8 py-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -423,7 +424,7 @@ export default function ApplyPage() {
                   ) : (
                     "Apply Now"
                   )}
-                </button>
+                </Button>
               </div>
             </form>
           </motion.div>

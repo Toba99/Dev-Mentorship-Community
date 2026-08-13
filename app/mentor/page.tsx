@@ -1,10 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
 import { ArrowRight, Users, Award, Heart, Clock } from "lucide-react"
 import SectionWrapper from "@/components/SectionWrapper"
 import CTASection from "@/components/CTASection"
+import { Button } from "@/components/ui/button"
+import { SectionHeading } from "@/components/ui/section-heading"
 
 export default function MentorPage() {
   const benefits = [
@@ -44,6 +45,7 @@ export default function MentorPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-blue-500/10" />
+        <div className="absolute inset-0 bg-grid-glow" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,31 +59,21 @@ export default function MentorPage() {
             <p className="text-xl md:text-2xl text-muted-foreground text-balance mb-8">
               Share your expertise and help shape the next generation of developers
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 group"
-            >
+            <Button href="/contact">
               Express Interest
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
           </motion.div>
         </div>
       </section>
 
       {/* Why Mentor */}
       <SectionWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Become a Mentor?</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Mentoring is one of the most rewarding ways to give back to the developer community
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Why mentor"
+          title="Why Become a Mentor?"
+          subtitle="Mentoring is one of the most rewarding ways to give back to the developer community"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {benefits.map((benefit, index) => (
