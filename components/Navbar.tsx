@@ -22,6 +22,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
+    { href: "/mentors", label: "Mentors" },
     { href: "/events", label: "Events" },
     { href: "/apply", label: "Apply" },
     { href: "/mentor", label: "Mentor" },
@@ -64,7 +65,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -76,7 +77,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/apply"
-              className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
+              className="px-6 py-2.5 rounded-lg bg-brand text-white font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
             >
               Apply Now
             </Link>
@@ -85,7 +86,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-foreground"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -100,7 +101,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50"
+            className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-border/50"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
               {navLinks.map((link) => (
@@ -116,7 +117,7 @@ export default function Navbar() {
               <Link
                 href="/apply"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium mt-4"
+                className="block w-full text-center px-6 py-3 rounded-lg bg-brand text-white font-medium mt-4"
               >
                 Apply Now
               </Link>

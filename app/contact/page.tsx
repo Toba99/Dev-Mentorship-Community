@@ -5,8 +5,9 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { motion } from "framer-motion"
-import { Loader2, CheckCircle2, Mail, MessageSquare } from "lucide-react"
+import { Loader2, CheckCircle2, Mail } from "lucide-react"
 import SectionWrapper from "@/components/SectionWrapper"
+import { Button } from "@/components/ui/button"
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -61,6 +62,7 @@ export default function ContactPage() {
     <>
       <section className="relative pt-32 pb-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-blue-500/10" />
+        <div className="absolute inset-0 bg-grid-glow" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -147,10 +149,10 @@ export default function ContactPage() {
                 )}
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full gap-2"
               >
                 {isSubmitting ? (
                   <>
@@ -163,7 +165,7 @@ export default function ContactPage() {
                     Send Message
                   </>
                 )}
-              </button>
+              </Button>
             </form>
           </motion.div>
         </div>
