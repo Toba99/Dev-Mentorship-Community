@@ -10,9 +10,14 @@ import { cn } from "@/lib/utils"
 interface EventGalleryGridProps {
   images: string[]
   title: string
+  containFirstImage?: boolean
 }
 
-export default function EventGalleryGrid({ images, title }: EventGalleryGridProps) {
+export default function EventGalleryGrid({
+  images,
+  title,
+  containFirstImage = false,
+}: EventGalleryGridProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -45,11 +50,27 @@ export default function EventGalleryGrid({ images, title }: EventGalleryGridProp
             )}
             aria-label={`View image ${index + 1} of ${title}`}
           >
+            {containFirstImage && index === 0 && (
+              <Image
+                src={image}
+                alt=""
+                fill
+                aria-hidden="true"
+                className="scale-110 object-cover opacity-30 blur-2xl"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={60}
+              />
+            )}
             <Image
               src={image}
               alt={`${title} — photo ${index + 1}`}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              className={cn(
+                "transition-transform duration-500",
+                containFirstImage && index === 0
+                  ? "object-contain group-hover:scale-[1.02]"
+                  : "object-cover group-hover:scale-110"
+              )}
               sizes="(max-width: 768px) 50vw, 25vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
