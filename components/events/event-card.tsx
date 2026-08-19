@@ -5,10 +5,12 @@ import Image from "next/image"
 import Link from "next/link"
 import {
   Calendar,
+  Clock3,
   MapPin,
   Presentation,
   Users,
   ArrowRight,
+  ExternalLink,
   CalendarClock,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -26,7 +28,9 @@ export default function EventCard({
   featured = false,
   delay = 0,
 }: EventCardProps) {
-  const speakerCount = new Set(event.sessions.map((s) => s.speaker)).size
+  const speakerCount = event.speakerCount ?? new Set(
+    event.sessions.flatMap((session) => session.speaker ? [session.speaker] : [])
+  ).size
 
   return (
     <motion.article
@@ -45,19 +49,45 @@ export default function EventCard({
         className={cn(
           "relative shrink-0 overflow-hidden",
           featured
-            ? "aspect-[16/10] lg:aspect-auto lg:w-[45%] lg:min-h-[22rem]"
-            : "aspect-[16/9]"
+            ? cn(
+                "lg:aspect-auto lg:w-[45%] lg:min-h-[22rem]",
+                event.coverFit === "contain" ? "aspect-[4/5]" : "aspect-[16/10]"
+              )
+            : event.coverFit === "contain"
+              ? "aspect-[4/5] sm:aspect-[16/9]"
+              : "aspect-[16/9]"
         )}
       >
+        {event.coverFit === "contain" && (
+          <Image
+            src={event.coverImage}
+            alt=""
+            fill
+            aria-hidden="true"
+            className="scale-110 object-cover opacity-30 blur-2xl"
+            sizes={featured ? "(max-width: 1024px) 100vw, 45vw" : "(max-width: 1024px) 100vw, 50vw"}
+            quality={60}
+          />
+        )}
         <Image
           src={event.coverImage}
           alt={event.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className={cn(
+            "transition-transform duration-500",
+            event.coverFit === "contain"
+              ? "object-contain p-2 group-hover:scale-[1.02] sm:p-0"
+              : "object-cover group-hover:scale-105"
+          )}
           sizes={featured ? "(max-width: 1024px) 100vw, 45vw" : "(max-width: 1024px) 100vw, 50vw"}
           priority={featured}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-t via-transparent to-transparent",
+            event.coverFit === "contain" ? "from-card/30" : "from-card/80"
+          )}
+        />
         <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
           <span className="rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-white shadow-lg">
             {event.edition} Edition
@@ -83,6 +113,12 @@ export default function EventCard({
             <Calendar className="h-4 w-4 text-blue-400" />
             {event.date}
           </span>
+          {event.time && (
+            <span className="flex items-center gap-2">
+              <Clock3 className="h-4 w-4 text-blue-400" />
+              {event.time}
+            </span>
+          )}
           <span className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-blue-400" />
             {event.location}
@@ -110,22 +146,29 @@ export default function EventCard({
           <span className="flex items-center gap-2">
             <Presentation className="h-4 w-4 text-blue-400" />
             {event.sessions.length}{" "}
-            {event.sessions.length === 1 ? "session" : "sessions"}
+            {event.upcoming
+              ? event.sessions.length === 1 ? "programme item" : "programme items"
+              : event.sessions.length === 1 ? "session" : "sessions"}
           </span>
-          <span className="flex items-center gap-2">
-            <Users className="h-4 w-4 text-blue-400" />
-            {speakerCount} {speakerCount === 1 ? "speaker" : "speakers"}
-          </span>
+          {speakerCount > 0 && (
+            <span className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-blue-400" />
+              {speakerCount} {speakerCount === 1 ? "speaker" : "speakers"}
+            </span>
+          )}
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-5">
           {event.upcoming && event.registerUrl && (
             <Link
               href={event.registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Register for ${event.title} (opens in a new tab)`}
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/40"
             >
               Register Now
-              <ArrowRight className="h-4 w-4" />
+              <ExternalLink className="h-4 w-4" />
             </Link>
           )}
           <Link

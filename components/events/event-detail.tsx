@@ -5,12 +5,13 @@ import Image from "next/image"
 import Link from "next/link"
 import {
   Calendar,
+  Clock3,
   MapPin,
   Users,
   Presentation,
   LayoutGrid,
   ArrowLeft,
-  ArrowRight,
+  ExternalLink,
   CalendarClock,
 } from "lucide-react"
 import SectionWrapper from "@/components/SectionWrapper"
@@ -24,7 +25,9 @@ interface EventDetailProps {
 }
 
 export default function EventDetail({ event }: EventDetailProps) {
-  const speakerCount = new Set(event.sessions.map((s) => s.speaker)).size
+  const speakerCount = event.speakerCount ?? new Set(
+    event.sessions.flatMap((session) => session.speaker ? [session.speaker] : [])
+  ).size
 
   return (
     <>
@@ -69,6 +72,12 @@ export default function EventDetail({ event }: EventDetailProps) {
                 <Calendar className="h-4 w-4 text-blue-400" />
                 {event.date}
               </span>
+              {event.time && (
+                <span className="flex items-center gap-2">
+                  <Clock3 className="h-4 w-4 text-blue-400" />
+                  {event.time}
+                </span>
+              )}
               <span className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
                 {event.location}
@@ -83,10 +92,13 @@ export default function EventDetail({ event }: EventDetailProps) {
               <div className="mt-8">
                 <Link
                   href={event.registerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Register for ${event.title} (opens in a new tab)`}
                   className="group inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-8 py-4 font-medium text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/40"
                 >
                   Register Now
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <ExternalLink className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             )}
@@ -97,16 +109,35 @@ export default function EventDetail({ event }: EventDetailProps) {
       {/* Overview */}
       <SectionWrapper className="pt-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          <div className="relative h-72 md:h-96 overflow-hidden rounded-2xl glass-card">
+          <div
+            className={`relative overflow-hidden rounded-2xl glass-card md:h-96 ${
+              event.coverFit === "contain" ? "aspect-[4/5] md:aspect-auto" : "h-72"
+            }`}
+          >
+            {event.coverFit === "contain" && (
+              <Image
+                src={event.coverImage}
+                alt=""
+                fill
+                aria-hidden="true"
+                className="scale-110 object-cover opacity-30 blur-2xl"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={60}
+              />
+            )}
             <Image
               src={event.coverImage}
               alt={event.title}
               fill
-              className="object-cover"
+              className={event.coverFit === "contain" ? "object-contain" : "object-cover"}
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+            <div
+              className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent ${
+                event.coverFit === "contain" ? "from-background/25" : "from-background/70"
+              }`}
+            />
           </div>
 
           <div>
@@ -117,25 +148,29 @@ export default function EventDetail({ event }: EventDetailProps) {
               {event.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 max-w-sm">
+            <div className={`grid gap-4 max-w-sm ${speakerCount > 0 ? "grid-cols-2" : "grid-cols-1"}`}>
               <div className="glass-card rounded-xl p-4 text-center">
                 <div className="flex items-center justify-center gap-2 text-3xl font-bold gradient-text">
                   <Presentation className="h-6 w-6 text-blue-400" />
                   {event.sessions.length}
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {event.sessions.length === 1 ? "Session" : "Sessions"}
+                  {event.upcoming
+                    ? event.sessions.length === 1 ? "Programme item" : "Programme items"
+                    : event.sessions.length === 1 ? "Session" : "Sessions"}
                 </p>
               </div>
-              <div className="glass-card rounded-xl p-4 text-center">
-                <div className="flex items-center justify-center gap-2 text-3xl font-bold gradient-text">
-                  <Users className="h-6 w-6 text-blue-400" />
-                  {speakerCount}
+              {speakerCount > 0 && (
+                <div className="glass-card rounded-xl p-4 text-center">
+                  <div className="flex items-center justify-center gap-2 text-3xl font-bold gradient-text">
+                    <Users className="h-6 w-6 text-blue-400" />
+                    {speakerCount}
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {speakerCount === 1 ? "Speaker" : "Speakers"}
+                  </p>
                 </div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {speakerCount === 1 ? "Speaker" : "Speakers"}
-                </p>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -145,7 +180,7 @@ export default function EventDetail({ event }: EventDetailProps) {
       <SectionWrapper className="bg-card/30">
         <SectionHeading
           eyebrow={event.upcoming ? "Programme" : "Agenda"}
-          title="Sessions & Talks"
+          title={event.upcoming ? "What to Expect" : "Sessions & Talks"}
           subtitle={event.tagline}
         />
         <div className="max-w-4xl mx-auto space-y-6">
@@ -172,7 +207,11 @@ export default function EventDetail({ event }: EventDetailProps) {
             <LayoutGrid className="h-4 w-4" />
             <span>{event.gallery.length} photos — click to expand</span>
           </div>
-          <EventGalleryGrid images={event.gallery} title={event.title} />
+          <EventGalleryGrid
+            images={event.gallery}
+            title={event.title}
+            containFirstImage={event.galleryCoverFit === "contain"}
+          />
         </SectionWrapper>
       )}
 
@@ -194,10 +233,13 @@ export default function EventDetail({ event }: EventDetailProps) {
             </p>
             <Link
               href={event.registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Register for ${event.title} (opens in a new tab)`}
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-8 py-4 font-medium text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/40"
             >
               Register Now
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <ExternalLink className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
             </Link>
           </motion.div>
         </SectionWrapper>

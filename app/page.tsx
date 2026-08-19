@@ -174,15 +174,20 @@ export default function Home() {
       </SectionWrapper>
 
       {/* Mentors Section */}
-      <SectionWrapper className="bg-card/30">
+      <SectionWrapper id="mentors" className="bg-card/30">
         <SectionHeading
           eyebrow="Meet the mentors"
           title="Learn From Engineers Who've Done It"
           subtitle="Our mentors volunteer their time to guide you through the path they've already walked."
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mentors.slice(0, 3).map((mentor, index) => (
-            <MentorCard key={mentor.name} mentor={mentor} delay={index * 0.1} />
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {mentors.slice(0, 4).map((mentor, index) => (
+            <MentorCard
+              key={mentor.name}
+              mentor={mentor}
+              delay={index * 0.1}
+              compact
+            />
           ))}
         </div>
         <div className="mt-12 text-center">

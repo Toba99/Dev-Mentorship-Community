@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ExternalLink, Mic2 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { EventSession } from "@/lib/events-data"
+import { cn } from "@/lib/utils"
 
 interface SessionCardProps {
   session: EventSession
@@ -43,23 +44,47 @@ export default function SessionCard({ session, index, delay = 0 }: SessionCardPr
                 {session.title}
               </h3>
 
-              <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                <Mic2 className="h-4 w-4 shrink-0 text-blue-400" />
-                <span className="font-medium text-foreground">
-                  {session.speaker}
-                </span>
-              </div>
+              {session.speaker && (
+                <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+                  <Mic2 className="h-4 w-4 shrink-0 text-blue-400" />
+                  <span className="font-medium text-foreground">
+                    {session.speaker}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Thumbnail — fixed box so `fill` always has dimensions to resolve against */}
             {session.image && (
-              <div className="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl md:w-48">
+              <div
+                className={cn(
+                  "relative shrink-0 overflow-hidden border border-border/50 bg-secondary/30",
+                  session.imageFit === "portrait"
+                    ? "aspect-square w-28 self-start rounded-2xl md:w-32"
+                    : "aspect-video w-full rounded-xl md:w-48"
+                )}
+              >
+                {session.imageFit === "contain" && (
+                  <Image
+                    src={session.image}
+                    alt=""
+                    fill
+                    aria-hidden="true"
+                    className="scale-110 object-cover opacity-30 blur-xl"
+                    sizes="(max-width: 768px) 100vw, 192px"
+                    quality={60}
+                  />
+                )}
                 <Image
                   src={session.image}
                   alt={session.title}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 192px"
+                  className={session.imageFit === "contain" ? "object-contain" : "object-cover"}
+                  sizes={
+                    session.imageFit === "portrait"
+                      ? "(max-width: 768px) 112px, 128px"
+                      : "(max-width: 768px) 100vw, 192px"
+                  }
                 />
               </div>
             )}

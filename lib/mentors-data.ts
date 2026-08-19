@@ -1,8 +1,11 @@
 export interface Mentor {
   name: string
   role: string
-  company: string
+  featuredRole?: string
+  company?: string
+  image?: string
   expertise: string[]
+  featuredExpertise?: string[]
   bio: string
   socials?: {
     linkedin?: string
@@ -16,7 +19,9 @@ export const mentors: Mentor[] = [
     name: "Samuel Olabamiji",
     role: "Community Lead",
     company: "League",
+    image: "/assets/mentors/samuel-olabamiji.jpg",
     expertise: ["Backend Engineering", "Platform Engineering", "Microservices", "Systems Design", "AI Engineering"],
+    featuredExpertise: ["Backend", "Microservices", "Platform"],
     bio: "Guides developers on navigating software engineering in the AI era with discipline and the right tools.",
     socials: {
       linkedin: "https://www.linkedin.com/in/samolabams",
@@ -28,51 +33,62 @@ export const mentors: Mentor[] = [
     name: "Bamidele Aloko",
     role: "Engineering Lead",
     company: "Max",
+    image: "/assets/mentors/bamidele-aloko.jpg",
     expertise: ["Backend Engineering", "AI Engineering", "Team Management"],
-    bio: "Helps mentees build accessible, production-grade interfaces and grow into senior frontend roles.",
+    featuredExpertise: ["Backend", "AI Engineering", "Leadership"],
+    bio: "Guides backend engineers in building resilient systems, applying AI thoughtfully, and growing into effective technical leaders.",
     socials: {
-      linkedin: "https://www.linkedin.com/",
+      linkedin: "https://www.linkedin.com/in/demolala",
     },
   },
   {
-    name: "David Mensah",
-    role: "Backend Engineer",
-    company: "Cloud Platform",
-    expertise: ["Backend", "Node.js", "System Design"],
-    bio: "Focused on API design, databases, and helping developers think in systems rather than snippets.",
+    name: "Babatope Adeoye",
+    role: "Senior Backend Engineer",
+    company: "9jaPay",
+    image: "/assets/mentors/babatope-adeoye.jpg",
+    expertise: ["Backend Engineering", "Java", "Spring Boot", "Microservices", "System Design", "AI Engineering"],
+    featuredExpertise: ["Node.js", "Java", "System Design"],
+    bio: "Guides backend developers in building reliable, production-ready systems with Java, system design, and practical AI engineering.",
     socials: {
-      github: "https://github.com/",
+      linkedin: "https://www.linkedin.com/in/babatope-adeoye/",
+      github: "https://github.com/Shorlar",
     },
   },
   {
-    name: "Chidinma Eze",
-    role: "DevOps Engineer",
-    company: "SaaS Company",
-    expertise: ["DevOps", "Cloud", "CI/CD"],
-    bio: "Demystifies infrastructure, containers, and deployment pipelines for early-career engineers.",
+    name: "Olusegun Olayinka",
+    role: "Senior Frontend & AI Product Engineer",
+    featuredRole: "Senior Frontend & AI Engineer",
+    company: "Fintech & AI",
+    image: "/assets/mentors/olusegun-olayinka.jpg",
+    expertise: ["React", "TypeScript", "Next.js", "Design Systems", "Accessibility", "AI Engineering"],
+    featuredExpertise: ["React", "TypeScript", "Evals"],
+    bio: "Guides developers in building accessible, production-ready frontend and AI products with sound engineering practices.",
     socials: {
-      linkedin: "https://www.linkedin.com/",
+      linkedin: "https://www.linkedin.com/in/olusegun-olayinka/",
+      x: "https://x.com/techwithsegun",
+      github: "https://github.com/olayis",
     },
   },
   {
-    name: "Tobi Adeyemi",
-    role: "Product Engineer",
-    company: "Health Tech",
-    expertise: ["Full Stack", "Product", "Career"],
-    bio: "Bridges product thinking and engineering to help mentees ship work that gets them hired.",
+    name: "Oluwafemi Fehintoluwa",
+    role: "Senior Laravel Engineer",
+    company: "Technology Value",
+    image: "/assets/mentors/oluwafemi-fehintoluwa.jpg",
+    expertise: ["Laravel", "PHP", "Livewire", "Vue.js", "REST APIs", "Payment Gateways"],
+    bio: "Guides developers in building scalable Laravel platforms, reliable APIs, and production systems where uptime and data integrity matter.",
     socials: {
-      x: "https://x.com/",
+      linkedin: "https://www.linkedin.com/in/cyrilcril/",
     },
   },
   {
-    name: "Grace Bello",
-    role: "Machine Learning Engineer",
-    company: "AI Research Lab",
-    expertise: ["AI", "Machine Learning", "Python"],
-    bio: "Mentors developers entering AI/ML with a practical, project-first learning path.",
+    name: "Martins Eweniyi",
+    role: "Software Engineer",
+    company: "Fintech",
+    image: "/assets/mentors/martins-eweniyi.jpg",
+    expertise: ["Full Stack", "Product"],
+    bio: "Helps developers build end-to-end products, from intuitive interfaces to scalable backend systems, focused on real-world delivery.",
     socials: {
-      linkedin: "https://www.linkedin.com/",
-      github: "https://github.com/",
+      linkedin: "https://www.linkedin.com/in/martins-eweniyi-919168156/",
     },
   },
 ]
